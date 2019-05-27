@@ -1,0 +1,23 @@
+<%= form_with(model: post,
+              html: {
+                  novalidate: true
+              },
+              data: {
+                  controller: "form",
+                  target: "form.form",
+                  action: "ajax:beforeSend->form#submitForm"
+              }) do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slug %>
+    <%= form.text_field :slug, required: true, pattern: "[a-zA-Z0-9]+" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
